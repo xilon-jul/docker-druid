@@ -69,6 +69,8 @@ RUN apt-get purge --auto-remove -y git \
                 /usr/local/apache-maven \
                 /root/.m2
 
+RUN mv /etc/localtime /etc/localtime.bak && ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
+
 WORKDIR /
 
 # Setup metadata store and add sample data
