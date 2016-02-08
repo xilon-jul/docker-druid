@@ -25,9 +25,9 @@ RUN wget -q -O - http://archive.apache.org/dist/maven/maven-3/3.2.5/binaries/apa
       && ln -s /usr/local/apache-maven/bin/mvn /usr/local/bin/mvn
 
 # Zookeeper
-# RUN wget -q -O - http://www.us.apache.org/dist/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz | tar -xzf - -C /usr/local \
- #    && cp /usr/local/zookeeper-3.4.6/conf/zoo_sample.cfg /usr/local/zookeeper-3.4.6/conf/zoo.cfg \
- #     && ln -s /usr/local/zookeeper-3.4.6 /usr/local/zookeeper
+RUN wget -q -O - http://www.us.apache.org/dist/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz | tar -xzf - -C /usr/local \
+     && cp /usr/local/zookeeper-3.4.6/conf/zoo_sample.cfg /usr/local/zookeeper-3.4.6/conf/zoo.cfg \
+      && ln -s /usr/local/zookeeper-3.4.6 /usr/local/zookeeper
 
 # Druid system user
 RUN adduser --system --group --no-create-home druid \
@@ -35,9 +35,9 @@ RUN adduser --system --group --no-create-home druid \
       && chown druid:druid /var/lib/druid
 
 # Druid (release tarball)
-#ENV DRUID_VERSION 0.7.1.1
-#RUN wget -q -O - http://static.druid.io/artifacts/releases/druid-services-$DRUID_VERSION-bin.tar.gz | tar -xzf - -C /usr/local
-#RUN ln -s /usr/local/druid-services-$DRUID_VERSION /usr/local/druid
+# ENV DRUID_VERSION 0.7.1.1
+# RUN wget -q -O - http://static.druid.io/artifacts/releases/druid-services-$DRUID_VERSION-bin.tar.gz | tar -xzf - -C /usr/local
+# RUN ln -s /usr/local/druid-services-$DRUID_VERSION /usr/local/druid
 
 # Druid (from source)
 RUN mkdir -p /usr/local/druid/lib
